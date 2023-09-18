@@ -1,0 +1,17 @@
+{
+  "name": "bases",
+  "version": "0.0.1",
+  "description": "Package to create files with multiplication tables",
+  "main": "multiply.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "multiply"
+  ],
+  "author": "Camilo ordonez",
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^17.7.2"
+  }
+}

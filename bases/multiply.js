@@ -1,15 +1,9 @@
-const fs = require('fs');
+const { createTableFile } = require('./helpers/createTableFile');
+const argv = require('./config/yargs');
 
-const base = 3;
-const max = 10;
-let output = '';
+const base = argv.base || 5;
+const limit = argv.limit || 10;
 
-for (let i = 1; i <= max; i++) {
-  if (i === max) {
-    output += `${base} x ${i} = ${base * i}`;
-    break;
-  }
-  output += `${base} x ${i} = ${base * i}\n`;
-}
-
-fs.writeFileSync(`table-${base}.txt`, output);
+createTableFile(base, limit, argv.display)
+  .then(fileName => console.log(`${fileName} created`))
+  .catch(err => console.log(err));
