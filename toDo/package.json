@@ -13,6 +13,7 @@
   "author": "Camilo Ordonez",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^8.0.0"
+    "inquirer": "^8.0.0",
+    "uuid": "^9.0.1"
   }
 }
