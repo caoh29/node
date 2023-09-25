@@ -8,16 +8,17 @@ const main = async () => {
     opt = await inquirerMenu();
     switch (opt) {
       case "1":
-        const place = await askForInput("City: ");
-        const city = await finds.getCities(place);
+        const city = await askForInput("city: ");
+        const data = await finds.getData(city);
+        const { name, latitude, longitude, country, population, is_capital } = data[0];
         console.log("\n        City Data       ");
         console.log('==========================');
-        console.log(`City: ${city}`);
-        console.log("Lat: ");
-        console.log("Long: ");
-        console.log("Temperature: ");
-        console.log("Min Temp: ");
-        console.log("Max Temp: ");
+        console.log(`City: ${name}`);
+        console.log(`Country: ${country}`);
+        console.log(`Population: ${population}`);
+        console.log(`Lat: ${latitude}`);
+        console.log(`Long: ${longitude}`);
+        console.log(`Is Capital: ${is_capital ? "Yes" : "No"}`);
         break;
       case "2":
         console.log("2");

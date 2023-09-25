@@ -8,15 +8,17 @@ class Finds {
     this.history = [];
   }
 
-  getCities = async (city) => {
+  getData = async (city) => {
     if (city.length === 0) return null;
     try {
-      // const res = await axios.get(`https://api.ipgeolocation.io/ipgeo?apiKey=${process.env.API_KEY}&ip=${city}`);
-      const res = await axios.get(`https://api.ipgeolocation.io/ipgeo?apiKey=${process.env.API_KEY}`);
-      console.log(res.data);
+      const res = await axios.get(`https://api.api-ninjas.com/v1/city?name=${city}`,{
+        headers: {
+          'X-Api-Key': `${process.env.API_KEY}`,
+        }
+      });
       return res.data;
     } catch (error) {
-      console.log(error);
+      return `${error}`;
     }
   }
 }
