@@ -5,6 +5,7 @@ class Server {
   constructor() {
     this.app = express();
     this.PORT = process.env.PORT || 3000;
+    this.PATH = '/api/users';
 
     // Middlewares
     this.middlewares();
@@ -15,42 +16,21 @@ class Server {
   }
 
   middlewares() {
+    // Parse and lecture of body for PUT, POST, etc
     this.app.use(express.json());
     // CORS
     this.app.use(cors());
-    // Directorio publico
+    // Public Directory
     this.app.use(express.static('public'));
   }
 
   routes() {
-    this.app.get('/api', (req, res) => {
-      res.json({
-        msg: 'pgl GET',
-      });
-    });
-
-    this.app.put('/api', (req, res) => {
-      res.json({
-        msg: 'pgl PUT',
-      });
-    });
-
-    this.app.delete('/api', (req, res) => {
-      res.json({
-        msg: 'pgl DELETE',
-      });
-    });
-
-    this.app.post('/api', (req, res) => {
-      res.json({
-        msg: 'pgl POST',
-      });
-    });
+    this.app.use(this.PATH, require('../routes/users'));
   }
 
   listen() {
     this.app.listen(this.PORT, () => {
-      console.log(`Server listening on http://localhost:${this.PORT}/api`);
+      console.log(`Server listening on http://localhost:${this.PORT}${this.PATH}`);
     });
   }
 }
