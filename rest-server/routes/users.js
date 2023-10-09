@@ -13,7 +13,7 @@ router.get('/', GET);
 // to use dynamic params just type ":XXX" replace XXX for the value you want
 router.put('/:id', PUT);
 
-router.delete('/', DELETE);
+router.delete('/:id', DELETE);
 
 // Second parameter is an array of middlewares to be executed before the controller function
 // Third parameter is the controller function
