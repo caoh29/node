@@ -4,7 +4,7 @@ const { interactWithDB } = require('../db/utils');
 class User {
   static collection = 'cafe';
 
-  constructor(name, email, password, isNew = true, google = false, role) {
+  constructor(name, email, password, isNew, google, role) {
     this.name = name;
     this.email = email;
     this.password = password;
@@ -13,22 +13,16 @@ class User {
     this.role = role;
   }
 
-  async saveOne() {
+  async save() {
     await interactWithDB(User.collection).insertOne(this);
   }
 
-  async updateOne(query) {
-    await interactWithDB(User.collection).replaceOne({ _id: query }, this);
+  async update(id) {
+    await interactWithDB(User.collection).replaceOne({ _id: id }, this);
   }
 
-  static async checkEmail(email) {
-    try {
-      const user = await interactWithDB(User.collection).findOne({ email });
-      return user;
-    }
-    catch (err) {
-      return null;
-    }
+  async delete(id) {
+    await interactWithDB(User.collection).replaceOne({ _id: id });
   }
 
   static async search(input) {

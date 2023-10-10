@@ -9,7 +9,7 @@ const isValidRole = async (role = '') => {
 };
 
 const isValidEmail = async (email = '') => {
-  const existsEmail = await User.checkEmail(email);
+  const existsEmail = await User.search(email);
   if (existsEmail) {
     throw new Error(`${email} already exists in the system`);
   }
