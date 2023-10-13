@@ -22,7 +22,7 @@ class User {
   }
 
   async delete(id) {
-    await interactWithDB(User.collection).replaceOne({ _id: id });
+    await interactWithDB(User.collection).deleteOne({ _id: id });
   }
 
   static async search(input) {
