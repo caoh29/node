@@ -55,6 +55,8 @@ const DELETE = async (req, res) => {
   if (id === '' || id === undefined) {
     res.status(400).json({ msg: 'missing id' });
   } else {
+    if (!req.user.auth || req.user.role !== 'admin') res.status(403).json({ msg: 'unauthorized' });
+
     const currentUser = await User.search(id);
     currentUser === null && res.status(404).json({ msg: 'user not found' });
 

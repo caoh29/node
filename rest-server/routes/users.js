@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { check } = require('express-validator');
 
 const { GET, PUT, POST, DELETE } = require('../controllers/users');
+const { validateJWT } = require('../middlewares/validate-JWT');
 const { validateFields } = require('../middlewares/validate-data');
 const { isValidRole, isValidEmail } = require('../helpers/db-validators');
 
@@ -13,7 +14,9 @@ router.get('/', GET);
 // to use dynamic params just type ":XXX" replace XXX for the value you want
 router.put('/:id', PUT);
 
-router.delete('/:id', DELETE);
+router.delete('/:id', [
+  validateJWT,
+], DELETE);
 
 // Second parameter is an array of middlewares to be executed before the controller function
 // Third parameter is the controller function
