@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket Client</title>
+  </head>
+  <body>
+    <h1>Socket Client</h1>
+    <hr>
+    <div style="display: flex;">
+      Socket Status:
+      <span id="online" style="color: green;">Online</span>
+      <span id="offline" style="color: red;">Offline</span>
+    </div>
+
+    <div>
+      <label for="data">Data to send:</label>
+      <input type="text" name="data" id="input">
+      <button id="btn">Send</button>
+    </div>
+    <script src="./socket.io/socket.io.js"></script>
+    <script src="./scripts//socket-client.js"></script>
+  </body>
+</html>
